@@ -37,13 +37,13 @@ resource "aws_lb_target_group" "yemi_tg" {
   vpc_id   = aws_vpc.yemi_logready_vpc.id
 
   health_check {
-    healthy_threshold   = 5
+    healthy_threshold   = 3
     interval            = 30
-    matcher             = "200,301,302"
+    matcher             = "200-399"
     path                = "/"
     port                = "traffic-port"
     protocol            = "HTTP"
-    timeout             = 5
+    timeout             = 10
     unhealthy_threshold = 2
   }
 
